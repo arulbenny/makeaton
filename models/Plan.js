@@ -1,37 +1,21 @@
 const mongoose = require("mongoose");
 
 const planSchema = new mongoose.Schema({
-  name: {
+  name: { type: String, required: true, trim: true },
+  description: { type: String, trim: true, default: "" },
+  price: { type: Number, required: true, min: 0 },
+  billingInterval: {
     type: String,
-    required: true,
-    trim: true
-  },
-  description: {
-    type: String,
-    default: ""
-  },
-  product: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
+    enum: ["daily", "weekly", "monthly", "yearly"],
     required: true
   },
-  price: {
-    type: Number,
-    required: true,
-    min: 0
-  },
-  billingCycle: {
-    type: String,
-    enum: ["monthly", "quarterly", "yearly"],
-    default: "monthly"
-  },
-  features: [{
-    type: String
-  }],
-  isActive: {
-    type: Boolean,
-    default: true
-  }
+  minimumQuantity: { type: Number, required: true, min: 1, default: 1 },
+  availabilityStart: { type: Date, required: true },
+  availabilityEnd: { type: Date, default: null },
+  autoClose: { type: Boolean, default: false },
+  earlyClose: { type: Boolean, default: false },
+  pause: { type: Boolean, default: true },
+  renew: { type: Boolean, default: true }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Plan", planSchema);

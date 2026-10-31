@@ -1,31 +1,19 @@
 const mongoose = require("mongoose");
 
+const variantSchema = new mongoose.Schema({
+  name: { type: String, required: true, trim: true },
+  sku: { type: String, trim: true },
+  salesPrice: { type: Number, required: true, min: 0 },
+  costPrice: { type: Number, required: true, min: 0 }
+});
+
 const productSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  description: {
-    type: String,
-    default: ""
-  },
-  category: {
-    type: String,
-    default: "General"
-  },
-  variants: [{
-    name: String,
-    sku: String,
-    price: {
-      type: Number,
-      min: 0
-    }
-  }],
-  isActive: {
-    type: Boolean,
-    default: true
-  }
+  name: { type: String, required: true, trim: true },
+  type: { type: String, required: true, trim: true },
+  salesPrice: { type: Number, required: true, min: 0 },
+  costPrice: { type: Number, required: true, min: 0 },
+  notes: { type: String, trim: true, default: "" },
+  variants: { type: [variantSchema], default: [] }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Product", productSchema);
