@@ -51,3 +51,12 @@ app.use('/api/payments', paymentRoutes);
 
 app.use('/api/discounts', discountRoutes);
 
+
+const reportRoutes = require('./routes/reportRoutes');
+
+const customerPortalRoutes = require('./routes/customerPortalRoutes');
+
+app.use('/api/reports', reportRoutes);
+
+app.use('/api/customer-portal', customerPortalRoutes);
+
