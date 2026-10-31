@@ -37,3 +37,8 @@ connectDB().then(() => {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
 
+
+const invoiceRoutes = require('./routes/invoiceRoutes');
+
+app.use('/api/invoices', invoiceRoutes);
+
