@@ -56,3 +56,4 @@ invoiceSchema.index(
 );
 
 module.exports = mongoose.model("Invoice", invoiceSchema);
+

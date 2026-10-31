@@ -42,3 +42,12 @@ const invoiceRoutes = require('./routes/invoiceRoutes');
 
 app.use('/api/invoices', invoiceRoutes);
 
+
+const paymentRoutes = require('./routes/paymentRoutes');
+
+const discountRoutes = require('./routes/discountRoutes');
+
+app.use('/api/payments', paymentRoutes);
+
+app.use('/api/discounts', discountRoutes);
+
